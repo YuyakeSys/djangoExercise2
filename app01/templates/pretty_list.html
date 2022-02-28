@@ -1,0 +1,72 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="container">
+        <div style="margin-bottom: 10px">
+            <a class="btn btn-success" href="/num/add">
+                <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                新建号码
+            </a>
+
+            <div style="float: right;width: 300px">
+                <form class="d-flex" role="search" method="get">
+                    <input name="q" class="form-control me-2" placeholder="Search" aria-label="Search" value="{{ search_data }}">
+                    <span>
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    </span>
+                </form>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                号码列表
+            </div>
+
+            <!-- Table -->
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>number</th>
+                    <th>price</th>
+                    <th>level</th>
+                    <th>status</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for obj in queryset %}
+                    <tr>
+                        <th>{{ obj.id }}</th>
+                        <td>{{ obj.mobile }}</td>
+                        <td>{{ obj.price }}</td>
+                        <td>{{ obj.get_level_display }}</td>
+                        <td>{{ obj.get_status_display }}</td>
+                        <td>
+                            <a class="btn btn-primary btn-xs" href="/num/{{ obj.id }}/edit">编辑</a>
+                            <a class="btn btn-danger btn-xs" href="#">删除</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+
+        </div>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+            {{ page_string }}
+                <li>
+                    <form style="float: left; margin-left: -1px" method="get">
+                        <input name="page" style="position: relative;float: left;
+                                display: inline-block;width: 80px; border-radius: 0;"
+                                type="text" class="form-control me-1" placeholder="页码">
+                        <button class="btn btn-outline-success" type="submit">跳转</button>
+                    </form>
+                </li>
+            </ul>
+</nav>
+    </div>
+
+{% endblock %}

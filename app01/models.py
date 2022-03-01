@@ -8,6 +8,7 @@ class Department(models.Model):
     def __str__(self):
         return self.title
 
+
 class UserInfo(models.Model):
     name = models.CharField(verbose_name="name", max_length=16)
     password = models.CharField(verbose_name="password", max_length=64)
@@ -26,6 +27,7 @@ class UserInfo(models.Model):
         (2, "女"),
     )
     gender = models.SmallIntegerField(verbose_name="sex", choices=gender_choices)
+
 
 class PrettyNum(models.Model):
     """ 靓号表 """

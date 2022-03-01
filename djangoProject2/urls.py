@@ -15,21 +15,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from app01 import views
+from app01.views import depart, pretty, user
 
 urlpatterns = [
     #path('admin/', admin.site.urls),
-    path('depart/list/', views.depart_list),
-    path('depart/add/', views.depart_add),
-    path('depart/delete/', views.depart_delete),
-    path('depart/<int:nid>/edit/', views.depart_edit),
+    path('depart/list/', depart.depart_list),
+    path('depart/add/', depart.depart_add),
+    path('depart/delete/', depart.depart_delete),
+    path('depart/<int:nid>/edit/', depart.depart_edit),
 
 
-    path('user/list/', views.user_list),
-    path('user/add/', views.user_add),
-    path('user/model/form/add/',views.user_model_form_add),
+    path('user/list/', user.user_list),
+    path('user/add/', user.user_add),
+    path('user/model/form/add/', user.user_model_form_add),
 
-    path('num/list/', views.number_list),
-    path('num/add/', views.num_add),
-    path('num/<int:nid>/edit',views.num_edit)
+    path('num/list/', pretty.number_list),
+    path('num/add/', pretty.num_add),
+    path('num/<int:nid>/edit', pretty.num_edit)
 ]

@@ -7,6 +7,8 @@ class Admin(models.Model):
     username = models.CharField(verbose_name="username", max_length=16)
     password = models.CharField(verbose_name="password", max_length=64)
 
+    def __str__(self):
+        return self.username
 
 class Department(models.Model):
     title = models.CharField(verbose_name='title', max_length=32)
@@ -54,3 +56,16 @@ class PrettyNum(models.Model):
         (2, "未使用")
     )
     status = models.SmallIntegerField(verbose_name="状态", choices=status_choices, default=2)
+
+
+class Task(models.Model):
+
+    level_choices = (
+        (1, "紧急"),
+        (2, "重要"),
+        (3, "临时"),
+    )
+    level = models.SmallIntegerField(verbose_name="级别", choices=level_choices, default=1)
+    title = models.CharField(verbose_name="标题", max_length=64)
+    detail = models.TextField(verbose_name="详细信息")
+    user = models.ForeignKey(verbose_name="负责人", to="Admin", on_delete=models.CASCADE)

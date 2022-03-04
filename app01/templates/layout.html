@@ -32,13 +32,13 @@
         <ul class="justify-content-end">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            ChesterMeng
+              {{ request.session.info.name }}
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="#">个人信息</a></li>
             <li><a class="dropdown-item" href="#">我的信息</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">注销</a></li>
+            <li><a class="dropdown-item" href="/logout/">注销</a></li>
           </ul>
             </ul>
     </div>
